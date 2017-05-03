@@ -15,14 +15,14 @@ implements KeyListener, ActionListener, MouseListener{
 	private static final long serialVersionUID = 1L;
 
 	Triangle monTriangle;
-	listeTriangles laListeTriangles;
+	ListeTriangles laListeTriangles;
 
 	public Panneau(){
 		int larg, haut;
 		larg = 1024;
 		haut = 768;
 
-		laListeTriangles = new listeTriangles();
+		laListeTriangles = new ListeTriangles();
 
 		initEcran2(larg, haut);
 
