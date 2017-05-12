@@ -8,6 +8,8 @@ implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private Panneau pan = new Panneau();
 	
+	private BarreOutils maBarre;
+	
 	int panteste;
 	
 	public Fenetre(){      
@@ -22,11 +24,11 @@ implements ActionListener{
 			pan.paintComponent(this.getGraphics());
 			addKeyListener(pan);
 		}
-//		else{
-//			this.setContentPane(pan2);
-//			pan2.paintComponent(this.getGraphics());
-//			addKeyListener(pan2);
-//		}
+		maBarre = new BarreOutils(pan);
+		this.getContentPane().add(maBarre);
+		maBarre.paintComponent(this.getGraphics());
+		addKeyListener(maBarre);
+		this.setVisible(true);
 	}
 
 

@@ -1,5 +1,6 @@
 package DessinsTriangle;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class ListeTriangles {
 	}
 
 	// Renvoie la liste des triangles ayant 2 sommets sur les trois proposés
-	private ListeTriangles chercheTriangles(Triangle leTriangle) {
+	private ListeTriangles chercheTrianglesVoisins(Triangle leTriangle) {
 		int sommets;
 		ListeTriangles autreListe = new ListeTriangles();
 
@@ -105,7 +106,7 @@ public class ListeTriangles {
 		} else {
 			// On construit la liste des triangles contenant deux sommets
 			// communs
-			ListeTriangles trianglesAgerer = chercheTriangles(autreTriangle);
+			ListeTriangles trianglesAgerer = chercheTrianglesVoisins(autreTriangle);
 
 			for (Triangle unTriangle : trianglesAgerer.mesTriangles) {
 				// On copie le triangle 3 fois
@@ -136,4 +137,45 @@ public class ListeTriangles {
 		mesTriangles.remove(autreTriangle);
 	}
 
+	public Color couleurMoyenne() {
+		int r = 0, g = 0, b = 0;
+		int compteur;
+
+		compteur = this.mesTriangles.size();
+		for (Triangle unTriangle : mesTriangles) {
+			r += unTriangle.maCouleur.getRed();
+			g += unTriangle.maCouleur.getGreen();
+			b += unTriangle.maCouleur.getBlue();
+		}
+		r /= compteur;
+		g /= compteur;
+		b /= compteur;
+
+		return new Color(r, g, b);
+	}
+
+	public Color couleurMoyenne(Color c1, Color c2){
+		int r = 0, g = 0, b = 0;
+		
+	
+			r += c1.getRed() + c2.getRed();
+			g += c1.getGreen() + c2.getGreen();
+			b += c1.getBlue() + c2.getBlue();
+	
+		r /= 2;
+		g /= 2;
+		b /= 2;
+
+		return new Color(r, g, b);
+	}
+	
+	public void lisseCouleurs() {
+		ListeTriangles mesVoisins;
+		for (Triangle unTriangle : mesTriangles) {
+			mesVoisins = chercheTrianglesVoisins(unTriangle);
+			Color nlleCouleur = mesVoisins.couleurMoyenne();
+			nlleCouleur=couleurMoyenne (nlleCouleur, unTriangle.maCouleur);
+			unTriangle.setColor(nlleCouleur);
+		}
+	}
 }

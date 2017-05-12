@@ -161,6 +161,10 @@ public class Triangle {
 		maCouleur = new Color(r, g, b);
 	}
 
+	public void setColor(Color uneCouleur) {
+		maCouleur = uneCouleur;
+	}
+	
 	public void setColorRandom() {
 		int r, g, b;
 		Random rand = new Random();
