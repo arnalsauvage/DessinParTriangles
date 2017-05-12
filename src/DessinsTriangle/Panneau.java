@@ -101,7 +101,6 @@ public class Panneau extends JPanel implements KeyListener, ActionListener, Mous
 
 		monTriangle = new Triangle(x5, y5, x7, y7, x8, y8);
 		laListeTriangles.ajouteTriangle(monTriangle);
-
 	} 
 
 	void initEcran3(int larg, int haut) {
