@@ -12,7 +12,7 @@ implements ActionListener{
 	
 	int panteste;
 	
-	public Fenetre(){      
+	public Fenetre(){     
 		int panteste = 1;
 		this.setTitle("Dessins triangle");
 		this.setSize(1024, 768);
