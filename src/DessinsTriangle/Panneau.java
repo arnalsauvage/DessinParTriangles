@@ -33,7 +33,7 @@ public class Panneau extends JPanel implements KeyListener, ActionListener, Mous
 		addMouseListener(this);
 	}
 
-	// initialise avec des triangles aléatoires
+	// initialise avec des triangles aléatoires 
 	private void initEcran0(int larg, int haut) { 
 		laListeTriangles = new ListeTriangles(monCadre);
 		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),  monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
