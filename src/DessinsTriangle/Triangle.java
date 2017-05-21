@@ -27,12 +27,12 @@ public class Triangle {
 	public Triangle(int x1, int y1, int x2, int y2) {
 		Rectangle monRect = new Rectangle(x1, y1, x2, y2);
 		Random rand = new Random();
-		point1 = new Point(monRect.x1 + rand.nextInt(monRect.x2 - monRect.x1),
-				monRect.y1 + rand.nextInt(monRect.y2 - monRect.y1));
-		point2 = new Point(monRect.x1 + rand.nextInt(monRect.x2 - monRect.x1),
-				monRect.y1 + rand.nextInt(monRect.y2 - monRect.y1));
-		point3 = new Point(monRect.x1 + rand.nextInt(monRect.x2 - monRect.x1),
-				monRect.y1 + rand.nextInt(monRect.y2 - monRect.y1));
+		point1 = new Point(monRect.getX1() + rand.nextInt(monRect.getX2() - monRect.getX1()),
+				monRect.getY1() + rand.nextInt(monRect.getY2() - monRect.getY1()));
+		point2 = new Point(monRect.getX1() + rand.nextInt(monRect.getX2() - monRect.getX1()),
+				monRect.getY1() + rand.nextInt(monRect.getY2() - monRect.getY1()));
+		point3 = new Point(monRect.getX1() + rand.nextInt(monRect.getX2() - monRect.getX1()),
+				monRect.getY1() + rand.nextInt(monRect.getY2() - monRect.getY1()));
 
 		setColorRandom();
 	}
@@ -110,7 +110,8 @@ public class Triangle {
 	private void dessineDegrade(Graphics2D g2d) {
 		Paint paint;
 		Color couleurBas = modifieCouleur(maCouleur);
-		paint = new GradientPaint((int) point1.getX(), (int) point1.getY(), couleurBas, (int) (point2.getX()+point3.getX())/2, (int) (point2.getY()+point3.getY())/2, maCouleur);
+		paint = new GradientPaint((int) point1.getX(), (int) point1.getY(), couleurBas,
+				(int) (point2.getX() + point3.getX()) / 2, (int) (point2.getY() + point3.getY()) / 2, maCouleur);
 
 		g2d.setPaint(paint);
 
@@ -127,6 +128,7 @@ public class Triangle {
 		g2d.fillPolygon(tx, ty, 3);
 	}
 
+	// Indique si le point x,y est contenu dans le triangle
 	public boolean pointInclus(int x, int y) {
 
 		Rectangle monRectangle = new Rectangle(this);
@@ -148,7 +150,7 @@ public class Triangle {
 		double APC = Math.abs(x1 * (y - y3) + x * (y3 - y1) + x3 * (y1 - y));
 		double PBC = Math.abs(x * (y2 - y3) + x2 * (y3 - y) + x3 * (y - y2));
 
-		boolean isInTriangle = ABP + APC + PBC == ABC;
+		boolean isInTriangle = ((ABP + APC + PBC) == ABC);
 		return isInTriangle;
 	}
 
@@ -164,7 +166,7 @@ public class Triangle {
 	public void setColor(Color uneCouleur) {
 		maCouleur = uneCouleur;
 	}
-	
+
 	public void setColorRandom() {
 		int r, g, b;
 		Random rand = new Random();
@@ -210,38 +212,38 @@ public class Triangle {
 		return valeur;
 	}
 
-	public ListeTriangles eclateTriangle(int x, int y) {
-		ListeTriangles laListe = new ListeTriangles();
-
-		Triangle autreTriangle;
-
-		autreTriangle = new Triangle(x, y, point1.x, point1.y, point2.x, point2.y);
-		autreTriangle.modifieMaCouleur(maCouleur);
-		laListe.ajouteTriangle(autreTriangle);
-		autreTriangle = new Triangle(x, y, point1.x, point1.y, point3.x, point3.y);
-		autreTriangle.modifieMaCouleur(maCouleur);
-		laListe.ajouteTriangle(autreTriangle);
-		autreTriangle = new Triangle(x, y, point2.x, point2.y, point3.x, point3.y);
-		autreTriangle.modifieMaCouleur(maCouleur);
-		laListe.ajouteTriangle(autreTriangle);
-
-		return laListe;
-	}
-
+	/*
+	 * public ListeTriangles eclateTriangle(int x, int y) { ListeTriangles
+	 * laListe = new ListeTriangles(getMonCadre());
+	 * 
+	 * Triangle autreTriangle;
+	 * 
+	 * autreTriangle = new Triangle(x, y, point1.x, point1.y, point2.x,
+	 * point2.y); autreTriangle.modifieMaCouleur(maCouleur);
+	 * laListe.ajouteTriangle(autreTriangle); autreTriangle = new Triangle(x, y,
+	 * point1.x, point1.y, point3.x, point3.y);
+	 * autreTriangle.modifieMaCouleur(maCouleur);
+	 * laListe.ajouteTriangle(autreTriangle); autreTriangle = new Triangle(x, y,
+	 * point2.x, point2.y, point3.x, point3.y);
+	 * autreTriangle.modifieMaCouleur(maCouleur);
+	 * laListe.ajouteTriangle(autreTriangle);
+	 * 
+	 * return laListe; }
+	 */
 	// Dit si le triangle est dans un coin de l'écran
-	public boolean estDansUnCoin(int x1, int y1, int x2, int y2) {
+	public boolean estDansUnCoin(Rectangle monCadre) {
 		Point monPoint;
 
-		monPoint = new Point(x1, y1);
+		monPoint = new Point(monCadre.getX1(), monCadre.getY1());
 		if (estUnSommet(monPoint))
 			return true;
-		monPoint = new Point(x1, y2);
+		monPoint = new Point(monCadre.getX1(), monCadre.getY2());
 		if (estUnSommet(monPoint))
 			return true;
-		monPoint = new Point(x2, y1);
+		monPoint = new Point(monCadre.getX2(), monCadre.getY1());
 		if (estUnSommet(monPoint))
 			return true;
-		monPoint = new Point(x2, y2);
+		monPoint = new Point(monCadre.getX2(), monCadre.getY2());
 		if (estUnSommet(monPoint))
 			return true;
 
@@ -271,4 +273,40 @@ public class Triangle {
 		return false;
 	}
 
+	// Cette méthode calcule le barycentre d'un triangle
+	public Point barycentre() {
+		int x, y;
+
+		x = (point1.x + point2.x + point3.x) / 3;
+		y = (point1.y + point2.y + point3.y) / 3;
+
+		Point monPoint = new Point(x, y);
+		return monPoint;
+
+	}
+
+	// Cette méthode dit si le triangle contient les deux points du rectangle
+	public boolean contientDeuxSommets(Rectangle monRect) {
+		Rectangle monSeg = new Rectangle(point1.x, point1.y, point2.x, point2.y);
+		if (monRect.equals(monSeg))
+			return true;
+		monSeg = new Rectangle(point1.x, point1.y, point3.x, point3.y);
+		if (monRect.equals(monSeg))
+			return true;
+		monSeg = new Rectangle(point3.x, point3.y, point2.x, point2.y);
+		if (monRect.equals(monSeg))
+			return true;
+		return false;
+	}
+
+	public boolean equals (Triangle autreTriangle){
+		boolean bretour = false;
+		
+		if (autreTriangle.estUnSommet(point1)&&
+				autreTriangle.estUnSommet(point2) && autreTriangle.estUnSommet(point3))
+			bretour = true;
+		return bretour;
+	}
 }
+
+

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Fenetre extends JFrame
 implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	private Panneau pan = new Panneau();
+	private Panneau pan;
 	
 	private BarreOutils maBarre;
 	
@@ -16,6 +16,8 @@ implements ActionListener{
 		int panteste = 1;
 		this.setTitle("Dessins triangle");
 		this.setSize(1024, 768);
+		Rectangle monRect = new Rectangle(50,50,950,700);
+		pan = new Panneau(monRect);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -29,8 +31,8 @@ implements ActionListener{
 		maBarre.paintComponent(this.getGraphics());
 		addKeyListener(maBarre);
 		this.setVisible(true);
+		
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

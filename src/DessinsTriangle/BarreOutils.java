@@ -10,11 +10,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
 public class BarreOutils extends JPanel implements KeyListener, ActionListener, MouseListener {
 	private static final long serialVersionUID = 1L;
@@ -25,11 +23,15 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 	int larg, haut;
 	int x, y;
 	Button bReinit;
+	Button beXplose;
+	Button bRandomizeCouleurs;
+	Button bLisseCouleurs;
 	ButtonGroup groupe;
 	Panneau monPanneau;
 	JRadioButton bouton1;
 	JRadioButton bouton2;
 	JRadioButton bouton3;
+	JComboBox modeDessinList;
 
 	public BarreOutils(Panneau monPanneau) {
 		haut = 32;
@@ -60,22 +62,53 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 		groupe.add(bouton3);
 		this.add(bouton3);
 
+		beXplose = new Button("eXplose");
+		beXplose.addActionListener(this);
+		this.add(beXplose);
+	
+		bRandomizeCouleurs = new Button("randomize couleurs");
+		bRandomizeCouleurs.addActionListener(this);
+		this.add(bRandomizeCouleurs);
+		
+		bLisseCouleurs = new Button("lisse couleurs");
+		bLisseCouleurs.addActionListener(this);
+		this.add(bLisseCouleurs);
+		
+		String[] modeDessinStrings = { "Fil de fer", "Plein", "Dégradé" };
+
+		// Create the combo box, select item at index 4.
+		// Indices start at 0, so 4 specifies the pig.
+		modeDessinList = new JComboBox(modeDessinStrings);
+		modeDessinList.setSelectedIndex(2);
+		modeDessinList.addActionListener(this);
+		this.add(modeDessinList);
 	}
 
 	public void actionPerformed(ActionEvent evt) {
 
 		if (evt.getSource() == bReinit) {
 			if (bouton1.isSelected())
-				monPanneau.initEcran(monPanneau.larg, monPanneau.haut);
+				monPanneau.initEcran();
 			if (bouton2.isSelected()) {
-				monPanneau.initEcran2(monPanneau.larg, monPanneau.haut);
+				monPanneau.initEcran2();
 			}
 			if (bouton3.isSelected()) {
-				monPanneau.initEcran3(monPanneau.larg, monPanneau.haut);
+				monPanneau.initEcran3();
 			}
 		}
-
+		if (evt.getSource() == modeDessinList) {
+			monPanneau.modeDessin = modeDessinList.getSelectedIndex();
+		}
+		
+		if (evt.getSource() == beXplose){
+			monPanneau.laListeTriangles.explosion(15);
+		}
+		if (evt.getSource() == bRandomizeCouleurs){
+			monPanneau.laListeTriangles.randomizeCouleurs();
+		}
+		
 		monPanneau.repaint();
+		monPanneau.requestFocus();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -117,9 +150,9 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int x, y;
-		x = e.getX();
-		y = e.getY();
+		// int x, y;
+		// x = e.getX();
+		// y = e.getY();
 		// Si l'utilisateur a cliqué sur un des trianlges existants,
 		// on le met en noir
 
