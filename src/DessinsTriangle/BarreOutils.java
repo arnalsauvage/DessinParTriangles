@@ -103,10 +103,13 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 		if (evt.getSource() == beXplose){
 			monPanneau.laListeTriangles.explosion(15);
 		}
+		
 		if (evt.getSource() == bRandomizeCouleurs){
 			monPanneau.laListeTriangles.randomizeCouleurs();
 		}
-		
+		if (evt.getSource() == bLisseCouleurs){
+			monPanneau.laListeTriangles.lisseCouleurs();
+		}
 		monPanneau.repaint();
 		monPanneau.requestFocus();
 	}
