@@ -144,7 +144,7 @@ public class Rectangle {
 	}
 
 	public boolean equals(Rectangle autRect) {
-		if (x1==autRect.x1 && x2==autRect.x2 && y1==autRect.y1 && y2==autRect.y2)
+		if (x1 == autRect.x1 && x2 == autRect.x2 && y1 == autRect.y1 && y2 == autRect.y2)
 			return true;
 		else
 			return false;

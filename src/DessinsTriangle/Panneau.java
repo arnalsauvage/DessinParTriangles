@@ -33,18 +33,23 @@ public class Panneau extends JPanel implements KeyListener, ActionListener, Mous
 		addMouseListener(this);
 	}
 
-	// initialise avec des triangles aléatoires 
-	private void initEcran0(int larg, int haut) { 
+	// initialise avec des triangles aléatoires
+	private void initEcran0(int larg, int haut) {
 		laListeTriangles = new ListeTriangles(monCadre);
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),  monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + monCadre.getLargeur(),
+				monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),  monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + monCadre.getLargeur(),
+				monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),  monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + monCadre.getLargeur(),
+				monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),  monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + monCadre.getLargeur(),
+				monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),  monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + monCadre.getLargeur(),
+				monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
 	}
 
@@ -53,24 +58,24 @@ public class Panneau extends JPanel implements KeyListener, ActionListener, Mous
 	void initEcran() {
 		laListeTriangles = new ListeTriangles(monCadre);
 
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(),
-				monCadre.getX1() +monCadre.getLargeur(),
-				monCadre.getX1(), monCadre.getX1() +(monCadre.getLargeur() / 2), monCadre.getY1() +(monCadre.getHauteur()) / 2);
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + monCadre.getLargeur(),
+				monCadre.getX1(), monCadre.getX1() + (monCadre.getLargeur() / 2),
+				monCadre.getY1() + (monCadre.getHauteur()) / 2);
 		laListeTriangles.ajouteTriangle(monTriangle);
 
-		monTriangle = new Triangle(monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1(), 
-				monCadre.getX1() +(monCadre.getLargeur() / 2), monCadre.getY1() +(monCadre.getHauteur() / 2),
-				monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() +monCadre.getHauteur());
+		monTriangle = new Triangle(monCadre.getX1() + monCadre.getLargeur(), monCadre.getY1(),
+				monCadre.getX1() + (monCadre.getLargeur() / 2), monCadre.getY1() + (monCadre.getHauteur() / 2),
+				monCadre.getX1() + monCadre.getLargeur(), monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
 
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1() +monCadre.getHauteur(), 
-				monCadre.getX1() +(monCadre.getLargeur() / 2), monCadre.getY1() +(monCadre.getHauteur() / 2),
-				monCadre.getX1() +monCadre.getLargeur(), monCadre.getY1() +(monCadre.getHauteur()));
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1() + monCadre.getHauteur(),
+				monCadre.getX1() + (monCadre.getLargeur() / 2), monCadre.getY1() + (monCadre.getHauteur() / 2),
+				monCadre.getX1() + monCadre.getLargeur(), monCadre.getY1() + (monCadre.getHauteur()));
 		laListeTriangles.ajouteTriangle(monTriangle);
 
-		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), 
-				monCadre.getX1() +(monCadre.getLargeur() / 2), monCadre.getY1() +(monCadre.getHauteur() / 2), 
-				monCadre.getX1(), monCadre.getY1() +monCadre.getHauteur() );
+		monTriangle = new Triangle(monCadre.getX1(), monCadre.getY1(), monCadre.getX1() + (monCadre.getLargeur() / 2),
+				monCadre.getY1() + (monCadre.getHauteur() / 2), monCadre.getX1(),
+				monCadre.getY1() + monCadre.getHauteur());
 		laListeTriangles.ajouteTriangle(monTriangle);
 	}
 
@@ -127,7 +132,8 @@ public class Panneau extends JPanel implements KeyListener, ActionListener, Mous
 	}
 
 	public void paintComponent(Graphics g) {
-		g.clearRect(monCadre.getX1(), monCadre.getY1(), monCadre.getX2() - monCadre.getX1(), monCadre.getY2() - monCadre.getY1());
+		g.clearRect(monCadre.getX1(), monCadre.getY1(), monCadre.getX2() - monCadre.getX1(),
+				monCadre.getY2() - monCadre.getY1());
 		laListeTriangles.dessine(g, modeDessin);
 	}
 

@@ -21,11 +21,11 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 	int nbOutils = 4;
 	int tailleOutil = 16;
 	int larg, haut;
-	int x,  y;
+	int x, y;
 	Button bReinit;
 	Button beXplose;
-	Button bRandomizeCouleurs; 
-	Button bLisseCouleurs; 
+	Button bRandomizeCouleurs;
+	Button bLisseCouleurs;
 	ButtonGroup groupe;
 	Panneau monPanneau;
 	JRadioButton bouton1;
@@ -65,15 +65,15 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 		beXplose = new Button("eXplose");
 		beXplose.addActionListener(this);
 		this.add(beXplose);
-	
+
 		bRandomizeCouleurs = new Button("randomize couleurs");
 		bRandomizeCouleurs.addActionListener(this);
 		this.add(bRandomizeCouleurs);
-		
+
 		bLisseCouleurs = new Button("lisse couleurs");
 		bLisseCouleurs.addActionListener(this);
 		this.add(bLisseCouleurs);
-		
+
 		String[] modeDessinStrings = { "Fil de fer", "Plein", "Dégradé" };
 
 		// Create the combo box, select item at index 4.
@@ -99,15 +99,15 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 		if (evt.getSource() == modeDessinList) {
 			monPanneau.modeDessin = modeDessinList.getSelectedIndex();
 		}
-		
-		if (evt.getSource() == beXplose){
+
+		if (evt.getSource() == beXplose) {
 			monPanneau.laListeTriangles.explosion(15);
 		}
-		
-		if (evt.getSource() == bRandomizeCouleurs){
+
+		if (evt.getSource() == bRandomizeCouleurs) {
 			monPanneau.laListeTriangles.randomizeCouleurs();
 		}
-		if (evt.getSource() == bLisseCouleurs){
+		if (evt.getSource() == bLisseCouleurs) {
 			monPanneau.laListeTriangles.lisseCouleurs();
 		}
 		monPanneau.repaint();

@@ -122,30 +122,27 @@ public class ListeTriangles {
 		Triangle nouveauTriangle;
 
 		// Si le segment1 est collé à un autre triangle ABD, on crée DAx et DBx
-		if (voisinSeg1 != null){
+		if (voisinSeg1 != null) {
 			ajouteTrianglesPointVsSegment(seg1, nouveauPoint, voisinSeg1);
 			mesTriangles.remove(voisinSeg1);
-		}
-		else {
+		} else {
 			nouveauTriangle = new Triangle(seg1.getX1(), seg1.getY1(), seg1.getX2(), seg1.getY2(), x, y);
 			ajouteTriangle(nouveauTriangle);
 		}
 
 		// Si le segment2 est collé à un autre triangle BCE, on crée EBx et ECx
-		if (voisinSeg2 != null){
+		if (voisinSeg2 != null) {
 			ajouteTrianglesPointVsSegment(seg2, nouveauPoint, voisinSeg2);
 			mesTriangles.remove(voisinSeg2);
-		}
-		else {
+		} else {
 			nouveauTriangle = new Triangle(seg2.getX1(), seg2.getY1(), seg2.getX2(), seg2.getY2(), x, y);
 			ajouteTriangle(nouveauTriangle);
 		}
 		// Si le segment3 est collé à un autre triangle ACF, on crée FAx et FCx
-		if (voisinSeg3 != null){
+		if (voisinSeg3 != null) {
 			ajouteTrianglesPointVsSegment(seg3, nouveauPoint, voisinSeg3);
 			mesTriangles.remove(voisinSeg3);
-		}
-		else {
+		} else {
 			nouveauTriangle = new Triangle(seg3.getX1(), seg3.getY1(), seg3.getX2(), seg3.getY2(), x, y);
 			ajouteTriangle(nouveauTriangle);
 		}
@@ -220,7 +217,7 @@ public class ListeTriangles {
 			unTriangle.setColor(nlleCouleur);
 		}
 	}
-	
+
 	public void randomizeCouleurs() {
 		ListeTriangles mesVoisins;
 		for (Triangle unTriangle : mesTriangles) {
@@ -230,6 +227,7 @@ public class ListeTriangles {
 			unTriangle.setColorRandom();
 		}
 	}
+
 	public Rectangle getMonCadre() {
 		return (monCadre);
 	}

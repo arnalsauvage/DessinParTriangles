@@ -50,6 +50,7 @@ public class Triangle {
 		maCouleur = new Color(r, g, b);
 	}
 
+	// Affiche sous forme de texte
 	public void afficheTexte() {
 		System.out.println(" x1 : " + point1.getX() + " - y1 :" + point1.getY());
 		System.out.println(" x2 : " + point2.getX() + " - y2 :" + point2.getY());
@@ -299,14 +300,11 @@ public class Triangle {
 		return false;
 	}
 
-	public boolean equals (Triangle autreTriangle){
+	public boolean equals(Triangle autreTriangle) {
 		boolean bretour = false;
-		
-		if (autreTriangle.estUnSommet(point1)&&
-				autreTriangle.estUnSommet(point2) && autreTriangle.estUnSommet(point3))
+
+		if (autreTriangle.estUnSommet(point1) && autreTriangle.estUnSommet(point2) && autreTriangle.estUnSommet(point3))
 			bretour = true;
 		return bretour;
 	}
 }
-
-
