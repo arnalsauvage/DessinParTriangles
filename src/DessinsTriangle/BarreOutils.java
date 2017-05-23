@@ -24,7 +24,7 @@ public class BarreOutils extends JPanel implements KeyListener, ActionListener, 
 	int x, y;
 	Button bReinit;
 	Button beXplose;
-	Button bRandomizeCouleurs;
+	Button bRandomizeCouleurs; 
 	Button bLisseCouleurs; 
 	ButtonGroup groupe;
 	Panneau monPanneau;
