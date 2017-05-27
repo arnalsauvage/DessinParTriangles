@@ -4,6 +4,15 @@ import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+// TODO : Gérer des annulations
+// TODO : Gérer l'enregistrement dans un fichier png
+// TODO : Gérer le redimensionnement du Panneau avec la fenêtre
+// TODO : Gérer le déplacement des points
+// TODO : Gérer l'enregistrement d'un dessin dans un format de fichier
+// TODO : Gérer l'affichage d'une photo en transparence
+// TODO : Gérer le coloriage d'après une photo
+
 public class Fenetre extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private Panneau pan;
