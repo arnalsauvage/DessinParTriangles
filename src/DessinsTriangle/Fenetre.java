@@ -19,7 +19,7 @@ public class Fenetre extends JFrame implements ActionListener {
 
 	private BarreOutils maBarre;
 
-	int panteste;
+	int panteste; 
 
 	public Fenetre() {
 		int panteste = 1;
